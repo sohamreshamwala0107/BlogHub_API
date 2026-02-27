@@ -17,6 +17,11 @@ def get_user_by_email(db: Session, email: str):
 def get_user_by_id(db: Session, user_id: int):
     return db.query(Users).filter(Users.id == user_id).first()
 
+# -----------------------------------
+# GET ALL USERS
+# -----------------------------------
+def get_all_users(db: Session):
+    return db.query(Users).all()
 
 # -----------------------------------
 # CREATE USER (REGISTER)

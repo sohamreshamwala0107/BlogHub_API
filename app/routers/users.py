@@ -91,3 +91,12 @@ def delete_user_route(user_id: int, db: Session = Depends(get_db)):
     delete_user(db, db_user)
 
     return {"message": "User deleted permanently"}
+
+# -----------------------------------
+# GET ALL USERS
+# -----------------------------------
+@router.get("/", response_model=list[UserResponse])
+def get_all_users_route(db: Session = Depends(get_db)):
+    from app.crud.users import get_all_users  # make sure this exists
+    users = get_all_users(db)
+    return users
