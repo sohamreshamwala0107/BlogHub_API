@@ -1,6 +1,8 @@
 from sqlalchemy import Column, Integer, String, Boolean, DateTime
 from sqlalchemy.sql import func
 from app.database import Base
+from sqlalchemy.orm import relationship
+
 
 
 class Users(Base):
@@ -15,3 +17,5 @@ class Users(Base):
     is_active = Column(Boolean, default=True)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), onupdate=func.now())
+
+    posts = relationship("Post", back_populates="author", cascade="all, delete")

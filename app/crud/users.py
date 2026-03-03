@@ -21,7 +21,7 @@ def get_user_by_id(db: Session, user_id: int):
 # GET ALL USERS
 # -----------------------------------
 def get_all_users(db: Session):
-    return db.query(Users).all()
+    return db.query(Users).filter(Users.role == 'user').all()
 
 # -----------------------------------
 # CREATE USER (REGISTER)

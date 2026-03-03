@@ -21,8 +21,12 @@ class UserResponse(BaseModel):
     created_at: datetime
     updated_at: datetime | None = None
 
-    class Config:   # Capital C
-        orm_mode = True
+    # class Config:   # Capital C
+    #     orm_mode = True
+
+    model_config = {
+        "from_attributes": True
+        }
 
 
 # ---------------- UPDATE ----------------
